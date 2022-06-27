@@ -1,0 +1,25 @@
+
+/gate/source/addSource 		PBS gps
+/gate/source/PBS/gps/particle		proton
+
+/gate/source/PBS/gps/direction 	0 0 1 
+/gate/source/PBS/gps/pos/type		Beam
+
+/gate/source/PBS/gps/ene/type 		Gauss
+/gate/source/PBS/gps/energy		15 MeV
+
+/gate/source/PBS/gps/pos/sigma_x 	5 mm
+/gate/source/PBS/gps/pos/sigma_y 	5 mm
+
+#/gate/source/PBS/gps/ang/sigma_x  	0 mrad
+#/gate/source/PBS/gps/ang/sigma_y	0 mrad
+
+#/gate/source/PBS/gps/ang/mintheta 	0 mrad
+#/gate/source/PBS/gps/ang/minphi	0 mrad
+#/gate/source/PBS/gps/ang/maxtheta 	3 mrad
+#/gate/source/PBS/gps/ang/maxphi	3 mrad
+
+/gate/source/PBS/attachTo   		beam_pipe
+/gate/source/PBS/gps/pos/centre 	0. 0. -325.004 cm
+
+#/gate/source/PBS/gps/pos/centre 	-375.002 0. 0. cm
