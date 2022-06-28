@@ -1,0 +1,28 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# BEAM PIPE
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/gate/world/daughters/name                  	beam_pipe
+/gate/world/daughters/insert                	cylinder
+/gate/beam_pipe/setMaterial               	Vacuum
+/gate/beam_pipe/geometry/setRmin          	0 cm
+/gate/beam_pipe/geometry/setRmax          	2 cm
+/gate/beam_pipe/geometry/setHeight        	750 cm
+/gate/beam_pipe/placement/setTranslation  	-50.0 0.0 0.0 cm
+/gate/beam_pipe/placement/setRotationAxis     	0 1 0
+/gate/beam_pipe/placement/setRotationAngle   	90 deg
+/gate/beam_pipe/vis/setColor              	gray
+/gate/beam_pipe/vis/forceWireframe
+/gate/beam_pipe/vis/setVisible 		1
+
+	/gate/beam_pipe/daughters/name                 exit_window 	
+	/gate/beam_pipe/daughters/insert               cylinder
+	/gate/exit_window/setMaterial               	Havar
+	/gate/exit_window/geometry/setRmin          	0 cm
+	/gate/exit_window/geometry/setRmax          	1 cm
+	/gate/exit_window/geometry/setHeight        	0.004 cm
+	/gate/exit_window/placement/setTranslation  	0.0 0.0 374.998 cm
+	/gate/exit_window/vis/setColor              	red
+	/gate/exit_window/vis/forceSolid
+	/gate/exit_window/vis/setVisible 		1
+
+

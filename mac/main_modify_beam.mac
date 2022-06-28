@@ -1,0 +1,133 @@
+
+#=====================================================
+# VERBOSITY
+#=====================================================
+
+/control/execute mac/verbose.mac
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+# =====================================================
+# GEOMETRY
+# =====================================================
+
+/gate/geometry/setMaterialDatabase   data/GateMaterials_INER.db
+
+# -----------------------------------------------------
+# WORLD
+# -----------------------------------------------------
+
+/gate/world/setMaterial            Air
+/gate/world/geometry/setXLength    8.5 m
+/gate/world/geometry/setYLength    2 m
+/gate/world/geometry/setZLength    2 m
+/gate/world/vis/setVisible 	   0
+# -----------------------------------------------------
+# BEAM PIPE
+# -----------------------------------------------------
+
+/control/execute			mac/INER_beam_pipe.mac
+
+# -----------------------------------------------------
+# ABS ATTENUATOR
+# -----------------------------------------------------
+
+#/control/execute			mac/INER_ABS_attenuator.mac
+
+# -----------------------------------------------------
+# TARGET
+# -----------------------------------------------------
+
+#/control/execute			mac/INER_target.mac
+
+# -----------------------------------------------------
+# HPGe DETECTOR
+# -----------------------------------------------------
+
+#/control/execute			mac/INER_HPGe.mac
+
+# -----------------------------------------------------
+# COLLIMATOR
+# -----------------------------------------------------
+
+#/control/execute			mac/INER_collimator.mac
+
+# -----------------------------------------------------
+# FARADAY CUP
+# -----------------------------------------------------
+
+#/control/execute			mac/INER_faraday_cup.mac
+
+# -----------------------------------------------------
+# VIRTUAL PLANE FOR PHASE SPACE
+# -----------------------------------------------------
+
+/gate/world/daughters/name               		Beam_profile
+/gate/world/daughters/insert                		box
+/gate/Beam_profile/setMaterial               		Vacuum
+/gate/Beam_profile/geometry/setXLength          	0.01 cm
+/gate/Beam_profile/geometry/setYLength          	5 cm
+/gate/Beam_profile/geometry/setZLength       		5 cm
+/gate/Beam_profile/placement/setTranslation 		354.855 0.0 0.0 cm
+/gate/Beam_profile/vis/setVisible 			1
+/gate/Beam_profile/vis/setColor			cyan
+/gate/Beam_profile/vis/forceWireframe
+/gate/Beam_profile/vis/setLineStyle			dashed
+
+# =====================================================
+# PHYSICS:
+# =====================================================
+
+/gate/physics/addPhysicsList QGSP_BIC_HP_EMY
+
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+
+#=====================================================
+# DETECTORS:
+#=====================================================
+
+# ----------------------------------------------------
+# the following actor regularly store the current number of event/track/step in a file
+# ----------------------------------------------------
+
+/gate/actor/addActor               		SimulationStatisticActor stat
+/gate/actor/stat/save              		output/output-PhS.txt
+/gate/actor/stat/saveEveryNSeconds 		20
+
+# ----------------------------------------------------
+# Phase space storage (a PhS for all particles)
+# ----------------------------------------------------
+
+/gate/actor/addActor                           PhaseSpaceActor PhS
+/gate/actor/PhS/attachTo                       Beam_profile    
+/gate/actor/PhS/save 	                     	output/geo.root
+/gate/actor/PhS/useVolumeFrame                 true
+
+
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# BEAMS
+#=====================================================
+
+/control/execute		mac/INER_beam.mac
+#/control/execute		mac/INER_pencil_beam.mac
+
+#=====================================================
+# START BEAMS
+#=====================================================
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/noGlobalOutput
+/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start

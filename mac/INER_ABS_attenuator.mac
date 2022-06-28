@@ -1,0 +1,15 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ABS attenuator
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/gate/world/daughters/name                  	ABS
+/gate/world/daughters/insert                	box
+/gate/ABS/setMaterial               		C15H17N1
+/gate/ABS/geometry/setXLength          	0 cm
+/gate/ABS/geometry/setYLength          	5 cm
+/gate/ABS/geometry/setZLength       		5 cm
+/gate/ABS/placement/setTranslation  		345.95 0.0 0.0 cm
+/gate/ABS/vis/setColor              		red
+/gate/ABS/vis/forceSolid			
+/gate/ABS/vis/setVisible 			1
+
+
