@@ -16,4 +16,5 @@
 
 ## Output ##
 
-- The particles entering the target and the secondary particles in the target is scored via Phase Space Actor to estimate the cross-section for the simulation.
+- The particles entering the target and the secondary particles in the target is scored via Phase Space Actor to estimate the cross-section for the simulation. (main_target.mac)
+- The Phase Space at the target using at a source (main_read_target.mac)
